@@ -15,6 +15,8 @@ import { FaJsSquare } from "react-icons/fa";
 import { FaJava } from "react-icons/fa";
 import { FaNode } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
+import { useState } from "react";
 
 function App() {
   return (
@@ -35,10 +37,14 @@ function App() {
 }
 
 function NavBar() {
+  let [open, setOpen] = useState(false);
   return (
-    <div className="flex justify-between items-center py-6 px-14 shadow-md fixed top-0 left-0 right-0 bg-white opacity-80 z-10">
+    <div className="flex justify-around items-center py-6 shadow-md fixed top-0 left-0 right-0 bg-white opacity-90 z-10 max-sm:justify-between max-sm:px-6">
       <h1 className="text-3xl font-bold text-sky-500">Amin</h1>
-      <ul className="flex gap-10 text-xl font-medium max-sm:hidden">
+      <ul
+        className={`flex gap-10 text-xl font-medium max-sm:flex-col max-sm:bg-sky-500 max-sm:absolute max-sm:top-20 max-sm:right-0 max-sm:left-20 max-sm:text-center max-sm:py-4 max-sm:pl-10 max-sm:text-white max-sm:rounded-tl-full max-sm:rounded-bl-full ${open ? 'max-sm:flex':'max-sm:hidden'}`}
+        id="menu"
+      >
         <li className="hover:text-sky-500 hover:duration-200">
           <a href="#home">Home</a>
         </li>
@@ -52,6 +58,9 @@ function NavBar() {
           <a href="#contact">Contact</a>
         </li>
       </ul>
+      <div onClick={()=>setOpen(!open)} className="text-2xl hidden max-sm:flex cursor-pointer">
+        <FaBars id="menu-btn"/>
+      </div>
     </div>
   );
 }
@@ -63,7 +72,11 @@ function HomePage() {
       id="home"
     >
       <div>
-        <img src={img1} alt="" className="w-96 rounded-full shadow-xl max-sm:w-64" />
+        <img
+          src={img1}
+          alt=""
+          className="w-96 rounded-full shadow-xl max-sm:w-64"
+        />
       </div>
       <div className="flex flex-col gap-4 text-4xl font-semibold max-sm:items-center max-sm:justify-center max-sm:text-center">
         <h1 className="text-sky-500">Hello Friends</h1>
@@ -117,7 +130,9 @@ function AboutMe() {
       className="flex flex-col justify-center items-center pt-24 gap-4 max-sm:text-center"
       id="about"
     >
-      <h1 className="text-sky-500 text-5xl font-semibold max-sm:text-4xl">About Me</h1>
+      <h1 className="text-sky-500 text-5xl font-semibold max-sm:text-4xl">
+        About Me
+      </h1>
       <p className="text-5xl font-semibold max-sm:text-3xl">
         Web Developper Full Stack{" "}
         <span className="text-sky-500">MERN Stack</span>
@@ -182,7 +197,10 @@ function ContactMe() {
     <div className="flex flex-col gap-10 items-center pt-24 pb-10" id="contact">
       <h1 className="text-5xl font-semibold text-sky-500">Contact Me</h1>
       <div className="w-8/12 flex gap-10 bg-gray-100 p-10 rounded-xl max-sm:flex-col max-sm:p-4 max-sm:w-11/12">
-        <form action="" className="flex flex-col items-start gap-4 w-4/5 max-sm:w-full">
+        <form
+          action=""
+          className="flex flex-col items-start gap-4 w-4/5 max-sm:w-full"
+        >
           <input
             placeholder="Your Name"
             type="text"
