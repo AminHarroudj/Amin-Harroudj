@@ -26,6 +26,8 @@ import { SiFramer } from "react-icons/si";
 import { SiExpress } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
 import { TbBrandMysql } from "react-icons/tb";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 function App() {
   return (
@@ -49,7 +51,12 @@ function App() {
 function NavBar() {
   let [open, setOpen] = useState(false);
   return (
-    <div className="flex justify-around items-center py-6 shadow-md fixed top-0 left-0 right-0 bg-white opacity-90 z-10 max-sm:justify-between max-sm:px-6">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 2 }}
+      className="flex justify-around items-center py-6 shadow-md fixed top-0 left-0 right-0 bg-white opacity-90 z-10 max-sm:justify-between max-sm:px-6"
+    >
       <h1 className="text-3xl font-bold text-sky-500">Amin</h1>
       <ul
         className={`flex gap-10 text-xl font-medium max-sm:flex-col max-sm:bg-sky-500 max-sm:absolute max-sm:top-20 max-sm:right-0 max-sm:left-20 max-sm:text-center max-sm:py-4 max-sm:pl-10 max-sm:text-white max-sm:rounded-tl-full max-sm:rounded-bl-full ${
@@ -58,19 +65,64 @@ function NavBar() {
         id="menu"
       >
         <li className="hover:text-sky-500 hover:duration-200">
-          <a href="#home">Home</a>
+          <Link
+            activeClass="active"
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+          >
+            Home
+          </Link>
         </li>
         <li className="hover:text-sky-500 hover:duration-200">
-          <a href="#about">About</a>
+          <Link
+            activeClass="active"
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-10}
+            duration={500}
+          >
+            About
+          </Link>
         </li>
         <li className="hover:text-sky-500 hover:duration-200">
-          <a href="#about">Learning</a>
+          <Link
+            activeClass="active"
+            to="learningpath"
+            spy={true}
+            smooth={true}
+            offset={-10}
+            duration={500}
+          >
+            Learning
+          </Link>
         </li>
         <li className="hover:text-sky-500 hover:duration-200">
-          <a href="#projects">Projects</a>
+          <Link
+            activeClass="active"
+            to="projects"
+            spy={true}
+            smooth={true}
+            offset={-10}
+            duration={500}
+          >
+            Projects
+          </Link>
         </li>
         <li className="hover:text-sky-500 hover:duration-200">
-          <a href="#contact">Contact</a>
+          <Link
+            activeClass="active"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={500}
+          >
+            Contact
+          </Link>
         </li>
       </ul>
       <div
@@ -79,7 +131,7 @@ function NavBar() {
       >
         <FaBars id="menu-btn" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -89,14 +141,23 @@ function HomePage() {
       className="flex justify-center items-center gap-44 pt-44 mb-12 max-sm:flex-col max-sm:gap-10 max-sm:pt-32 max-sm:mb-0"
       id="home"
     >
-      <div>
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 2 }}
+      >
         <img
           src={img1}
           alt=""
           className="w-96 rounded-full shadow-xl max-sm:w-64"
         />
-      </div>
-      <div className="flex flex-col gap-4 text-4xl font-semibold max-sm:items-center max-sm:justify-center max-sm:text-center">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: +50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 2 }}
+        className="flex flex-col gap-4 text-4xl font-semibold max-sm:items-center max-sm:justify-center max-sm:text-center"
+      >
         <h1 className="text-sky-500">Hello Friends</h1>
         <h1>I'm Mohammed El Amin</h1>
         <p>Web Developer</p>
@@ -135,7 +196,7 @@ function HomePage() {
             <FaInstagram />
           </a>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -152,18 +213,36 @@ function Button({ title }) {
 
 function AboutMe() {
   return (
-    <div
+    <motion.div
       className="flex flex-col justify-center items-center pt-24 gap-4 max-sm:text-center"
       id="about"
     >
-      <h1 className="text-sky-500 text-5xl font-semibold max-sm:text-4xl">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-sky-500 text-5xl font-semibold max-sm:text-4xl"
+      >
         About Me
-      </h1>
-      <p className="text-5xl font-semibold max-sm:text-3xl">
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-5xl font-semibold max-sm:text-3xl"
+      >
         Web Developper Full Stack{" "}
         <span className="text-sky-500">MERN Stack</span>
-      </p>
-      <div className="mt-10 flex flex-col gap-4 lg:flex-row">
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="mt-10 flex flex-col gap-4 lg:flex-row"
+      >
         <CarteSkill title="Mongo DB" description="Intermidiate Level">
           <SiMongodb />
         </CarteSkill>
@@ -176,18 +255,23 @@ function AboutMe() {
         <CarteSkill title="Node JS" description="Advance Level">
           <FaNode />
         </CarteSkill>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 function CarteSkill({ children, title = "null", description = "null" }) {
   return (
-    <div className="flex flex-col justify-center items-center gap-4 bg-gray-100 py-6 px-16 rounded-xl max-sm:px-20 hover:bg-gray-200 cursor-pointer">
+    <motion.div
+      initial={{ x: -250, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 2 }}
+      className="flex flex-col justify-center items-center gap-4 bg-gray-100 py-6 px-16 rounded-xl max-sm:px-20 hover:bg-gray-200 cursor-pointer"
+    >
       <span className="text-8xl text-sky-500">{children}</span>
       <h1 className="text-xl font-semibold">{title}</h1>
       <p className="text-lg text-gray-600">{description}</p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -197,12 +281,24 @@ function LearningPath() {
       className="flex flex-col justify-center items-center pt-24 gap-4 max-sm:text-center"
       id="learningpath"
     >
-      <h1 className="text-sky-500 text-5xl font-semibold max-sm:text-4xl">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-sky-500 text-5xl font-semibold max-sm:text-4xl"
+      >
         My Learning Path
-      </h1>
-      <p className="text-2xl font-medium text-gray-600">
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-2xl font-medium text-gray-600"
+      >
         Here I will show you my path of learning website development
-      </p>
+      </motion.p>
       <div className="grid grid-cols-1 mt-10 lg:grid-cols-4 gap-4">
         <CarteSkill title="HTML" description="Advanced Level">
           <FaHtml5 />
@@ -245,8 +341,24 @@ function MyProjects() {
       className="flex flex-col justify-center items-center gap-4 pt-24"
       id="projects"
     >
-      <h1 className="text-sky-500 text-5xl font-semibold">My Projects</h1>
-      <p className="text-2xl font-medium text-gray-600">My awesome works</p>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-sky-500 text-5xl font-semibold"
+      >
+        My Projects
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className="text-2xl font-medium text-gray-600"
+      >
+        My awesome works
+      </motion.p>
       <div className="grid grid-cols-3 mt-10 gap-10 max-sm:grid-cols-1">
         <a
           href="https://amin-harroudj.vercel.app/"
@@ -297,16 +409,29 @@ function MyProjects() {
 
 function ProjectCard({ children, imageSrc, title = "null" }) {
   return (
-    <div className="cursor-pointer w-96 pb-4 flex flex-col gap-4 items-center border-2 rounded-lg max-sm:w-72 hover:bg-gray-100">
+    <motion.div
+      initial={{ y: +50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 2 }}
+      viewport={{ once: true }}
+      className="cursor-pointer w-96 pb-4 flex flex-col gap-4 items-center border-2 rounded-lg max-sm:w-72 hover:bg-gray-100"
+    >
       <img src={imageSrc} alt={title} className="w-96 rounded-lg" />
       <h1 className="text-xl font-medium">{title}</h1>
-    </div>
+    </motion.div>
   );
 }
 
 function ContactMe() {
   return (
-    <div className="flex flex-col gap-10 items-center pt-24 pb-10" id="contact">
+    <motion.div
+      initial={{ y: +50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 2 }}
+      viewport={{ once: true }}
+      className="flex flex-col gap-10 items-center pt-24 pb-10"
+      id="contact"
+    >
       <h1 className="text-5xl font-semibold text-sky-500">Contact Me</h1>
       <div className="w-8/12 flex gap-10 bg-gray-100 p-10 rounded-xl max-sm:flex-col max-sm:p-4 max-sm:w-11/12">
         <form
@@ -354,15 +479,21 @@ function ContactMe() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function Footer() {
   return (
-    <div className="flex justify-center p-6 bg-gray-100 text-md font-semibold text-gray-700 text-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+      viewport={{ once: true }}
+      className="flex justify-center p-6 bg-gray-100 text-md font-semibold text-gray-700 text-center"
+    >
       <h1>Copyright © 2024 Mohammed El Amin Harroudj . All Rights reserved.</h1>
-    </div>
+    </motion.div>
   );
 }
 
