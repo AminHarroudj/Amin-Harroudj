@@ -64,7 +64,7 @@ function NavBar() {
         }`}
         id="menu"
       >
-        <li className="hover:text-sky-500 hover:duration-200">
+        <li className="hover:text-sky-500 hover:duration-200 cursor-pointer">
           <Link
             activeClass="active"
             to="home"
@@ -76,7 +76,7 @@ function NavBar() {
             Home
           </Link>
         </li>
-        <li className="hover:text-sky-500 hover:duration-200">
+        <li className="hover:text-sky-500 hover:duration-200 cursor-pointer">
           <Link
             activeClass="active"
             to="about"
@@ -88,7 +88,7 @@ function NavBar() {
             About
           </Link>
         </li>
-        <li className="hover:text-sky-500 hover:duration-200">
+        <li className="hover:text-sky-500 hover:duration-200 cursor-pointer">
           <Link
             activeClass="active"
             to="learningpath"
@@ -100,7 +100,7 @@ function NavBar() {
             Learning
           </Link>
         </li>
-        <li className="hover:text-sky-500 hover:duration-200">
+        <li className="hover:text-sky-500 hover:duration-200 cursor-pointer">
           <Link
             activeClass="active"
             to="projects"
@@ -112,7 +112,7 @@ function NavBar() {
             Projects
           </Link>
         </li>
-        <li className="hover:text-sky-500 hover:duration-200">
+        <li className="hover:text-sky-500 hover:duration-200 cursor-pointer">
           <Link
             activeClass="active"
             to="contact"
@@ -138,7 +138,7 @@ function NavBar() {
 function HomePage() {
   return (
     <div
-      className="flex justify-center items-center gap-44 pt-44 mb-12 max-sm:flex-col max-sm:gap-10 max-sm:pt-32 max-sm:mb-0"
+      className="flex justify-center items-center gap-44 pt-44 mb-20 max-sm:flex-col max-sm:gap-10 max-sm:pt-32 max-sm:mb-0"
       id="home"
     >
       <motion.div
